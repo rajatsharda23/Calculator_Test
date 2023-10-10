@@ -6,8 +6,8 @@ const themeIcon = document.getElementById("theme-icon");
 const res = document.getElementById("result");
 const toast = document.getElementById("toast");
 
-function calculate(value) {
-  const calculatedValue = eval(value || null);
+function calculate(value,res) {
+  const calculatedValue = eval(value);
   if (isNaN(calculatedValue)) {
     res.value = "Can't divide 0 with 0";
     setTimeout(() => {
@@ -18,13 +18,26 @@ function calculate(value) {
   }
 }
 
+module.exports = calculate;
+
 // Swaps the stylesheet to achieve dark mode.
 function changeTheme() {
+  console.log('Changing theme');
+  // Check if the theme element exists before trying to access it
   const theme = document.getElementById("theme");
+  const toast = document.getElementById("toast");
+
+  if (!theme) {
+    console.log('The "theme" element with id="theme" was not found in the DOM.');
+    return;
+  }
+
   setTimeout(() => {
     toast.innerHTML = "Calculator";
   }, 1500);
+
   if (theme.getAttribute("href") === lightTheme) {
+    console.log('Theme changed to Dark Mode');
     theme.setAttribute("href", darkTheme);
     themeIcon.setAttribute("src", sunIcon);
     toast.innerHTML = "Dark Mode 🌙";
@@ -34,6 +47,9 @@ function changeTheme() {
     toast.innerHTML = "Light Mode ☀️";
   }
 }
+
+
+module.exports = changeTheme;
 
 // Displays entered value on screen.
 function liveScreen(enteredValue) {

@@ -1,0 +1,16 @@
+{
+  "name": "calculator_test",
+  "version": "1.0.0",
+  "description": "A simple Calculator App built with HTML, CSS, and JavaScript. It also has a Dark Mode.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^22.1.0"
+  }
+}
